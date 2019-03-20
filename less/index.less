@@ -1,59 +1,291 @@
-// Is this working?
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
 */
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-/* Set every element's box-sizing to border-box */
+// Variables
+@bg: #fff6e2;
+@bg-light: boolean(luma(@bg) > 50%);
+@dark-gray: #35495e;
+@medium-gray: #526488;
+@aqua: #00dfdf;
+@nice-blue: #255fff;
+
 * {
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
+body {
+  background: @bg;
+  color: if(@bg-light, #35495e, #fff6e2);
+  font-family: 'Montserrat';
+  line-height: 1.5em;
+
+  a {
+    color: @dark-gray;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  a:hover {
+    color: @aqua;
+    border-bottom: 2px solid @aqua;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  i {
+    color: @bg;
+  }
+
+  i:hover {
+    color: @aqua;
+  }
 }
 
+main {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.container1 > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+}
+
+.container1 {
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  grid-template-rows: 250px;
+  background: @dark-gray;
+
+  .header1 {
+    img {
+      border-radius: 50%;
+      border: 10px solid @bg;
+      width: 200px;
+    }
+  }
+
+  .header2 {
+    display: flex;
+    flex-flow: column wrap;
+    min-height: 180px;
+    color: @bg;
+
+    #name {
+      font-family: 'Sacramento', cursive;
+      font-size: 6rem;
+      margin-bottom: 20px;
+    }
+    #tag {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1rem;
+    }
+  }
+}
+
+.container2 ul {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  margin: 20px 20px;
+}
+
+.container3 {
+  display: flex;
+  flex-flow: row wrap;
+
+  .about {
+    margin: 20px 20px;
+    h2 {
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+  }
+
+  .skills {
+    h2 {
+      text-transform: uppercase;
+      margin: 10px 20px 0px 20px;
+    }
+    ul {
+      margin: 10px 20px 0px 20px;
+    }
+  }
+}
+
+.main-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  min-height: 80px;
+  background: @dark-gray;
+  color: @bg;
+  ul {
+    display: flex;
+  }
+  li {
+    padding: 0px 20px 0px 20px;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 575.98px) {
+  .container1 {
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+
+    .header2 {
+      min-height: 180px;
+      background: @dark-gray;
+
+      #name {
+        margin-bottom: 20px;
+        color: @bg;
+      }
+      #tag {
+        color: @bg;
+      }
+    }
+  }
+  .main-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    background: @dark-gray;
+    min-height: 80px;
+    color: @bg;
+  }
+}
